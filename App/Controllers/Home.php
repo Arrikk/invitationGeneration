@@ -39,7 +39,7 @@ class Home extends Controller
       $imageX = imagesx($image);
       $imageY = imagesy($image);
 
-      $positionX = (int) ($imageX * 0.4);
+      $positionX = (int) ($imageX * 0.28);
       $positionY = (int) ($imageY * 0.278);
 
       imagettftext($image, $fontSize, 0, $positionX, $positionY, $textColor, $fontFamily, $text);
