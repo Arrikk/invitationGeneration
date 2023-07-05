@@ -32,7 +32,7 @@ $('#modalForm').on('submit', function(e){
         data: new FormData(this),
         processData: false,
         contentType: false,
-        bedoreSend: () => {
+        beforeSend: () => {
           $('#send').attr('disabled', true).text('💞...')
         },
         success: (s) => {
@@ -56,7 +56,7 @@ $('#confirmBtn').on('click', function(e){
         method: "POST",
         url: "/save",
         data: imgData,
-        bedoreSend: () => {
+        beforeSend: () => {
           btn.attr('disabled', true).text('💞....')
         },
         success: (s) => {
