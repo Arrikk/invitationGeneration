@@ -78,4 +78,21 @@ class Home extends Controller
       }
       
     }
+
+
+    function invitations() {
+      $path = 'Public/invitations/';
+      $data = [];
+      if(is_dir($path)){
+        $files = scandir($path);
+        foreach($files as $file):
+          if($file === '.' || $file === '..') continue;
+          $name = explode('.', $file);
+          $data[$name[0]] = json_decode(file_get_contents($path.$file));
+        endforeach;
+        Res::json($data);
+      }else{
+        Res::send("No invitations Yet");
+      }
+    }
 }
