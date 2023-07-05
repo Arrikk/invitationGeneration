@@ -63,7 +63,9 @@ $('#confirmBtn').on('click', function(e){
           $('#modal-success').show()
           $(imgModal).hide()
           $(modal).hide()
-          console.log(s)
+          element = $('#modalImage')
+          html2pdf().from(element).save()
+          convertBase64ToPDFAndDownload(imgData.image, 'invitation.pdf')
         },
         error: (e) => {
           btn.attr('disabled', false).text('Confirm')
@@ -71,5 +73,21 @@ $('#confirmBtn').on('click', function(e){
         }
     })
 })
+
+function convertBase64ToPDFAndDownload(base64Data, fileName) {
+  var byteCharacters = atob(base64Data);
+  var byteNumbers = new Array(byteCharacters.length);
+  for (var i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  var byteArray = new Uint8Array(byteNumbers);
+  var file = new Blob([byteArray], { type: "application/jpg" });
+console.log(file)
+  var link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = fileName;
+  link.click();
+}
+
 
 
