@@ -63,9 +63,7 @@ $('#confirmBtn').on('click', function(e){
           $('#modal-success').show()
           $(imgModal).hide()
           $(modal).hide()
-          element = $('#modalImage')
-          html2pdf().from(element).save()
-          convertBase64ToPDFAndDownload(imgData.image, 'invitation.pdf')
+          convertBase64ToPDFAndDownload(imgData.image, 'invitation.jpg')
         },
         error: (e) => {
           btn.attr('disabled', false).text('Confirm')

@@ -30,10 +30,10 @@ class Home extends Controller
       $imagePath = 'Public/invitation.jpg';
       $image = imagecreatefromjpeg($imagePath);
 
-      $fontFamily = 'Public/font.otf';
+      $fontFamily = 'Public/fonts.ttf';
       $fontSize = 65;
 
-      $text = $name;
+      $text = strtoupper($name);
       $textColor = imagecolorallocate($image, 0, 0, 0);
 
       $imageX = imagesx($image);
