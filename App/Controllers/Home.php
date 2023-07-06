@@ -49,7 +49,7 @@ class Home extends Controller
       $imgData = ob_get_clean();
       imagedestroy($image);
       $b64 = base64_encode($imgData);
-      // header('Content-Type: image/jpg');
+      // header('Content-Type: image/jpg');ﬁ
       return $b64;
     }
 
