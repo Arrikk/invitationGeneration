@@ -111,22 +111,26 @@ class Home extends Controller
     $sheet->setCellValue('E2', 'Email');
 
     // For Bride
-    $i = 3;
-    foreach ($data['bride'] as $info) :
-      $sheet->setCellValue("A$i", $info->name);
-      $sheet->setCellValue("B$i", $info->email);
-      $i++;
-    endforeach;
+    if (isset($data['bride'])) :
+      $i = 3;
+      foreach ($data['bride'] as $info) :
+        $sheet->setCellValue("A$i", $info->name);
+        $sheet->setCellValue("B$i", $info->email);
+        $i++;
+      endforeach;
+    endif;
     // For Groom
-    $i = 3;
-    foreach ($data['groom'] as $info) :
-      $sheet->setCellValue("D$i", $info->name);
-      $sheet->setCellValue("E$i", $info->email);
-      $i++;
-    endforeach;
+    if (isset($data['groom'])) :
+      $i = 3;
+      foreach ($data['groom'] as $info) :
+        $sheet->setCellValue("D$i", $info->name);
+        $sheet->setCellValue("E$i", $info->email);
+        $i++;
+      endforeach;
+    endif;
 
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-    
+
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="invitation.xlsx"');
     $writer->save('php://output');
